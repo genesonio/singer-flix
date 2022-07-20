@@ -1,10 +1,10 @@
 import { Category } from "./Category";
-import { Course } from "./Course";
+import { Exercise } from "./Exercise";
 
-Category.hasMany(Course)
-Course.belongsTo(Category)
+Category.hasMany(Exercise)
+Exercise.belongsTo(Category)
 
 export {
   Category,
-  Course
+  Exercise
 }

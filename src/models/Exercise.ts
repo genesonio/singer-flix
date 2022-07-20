@@ -1,20 +1,19 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import { sequelize } from "../database";
 
-export interface Course {
+export interface Exercise {
   id: number,
   name: string,
   description: string,
   thumbnailUrl: string,
-  featured: boolean,
   categoryId: number
 }
 
-export interface CourseCreationAttributes extends Optional<Course, 'id' | 'thumbnailUrl' | 'featured'> { }
+export interface ExerciseCreationAttributes extends Optional<Exercise, 'id' | 'thumbnailUrl'> { }
 
-export interface CourseInstance extends Model<Course, CourseCreationAttributes>, Course { }
+export interface ExerciseInstance extends Model<Exercise, ExerciseCreationAttributes>, Exercise { }
 
-export const Course = sequelize.define<CourseInstance, Course>('Course', {
+export const Exercise = sequelize.define<ExerciseInstance, Exercise>('Exercise', {
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -31,10 +30,6 @@ export const Course = sequelize.define<CourseInstance, Course>('Course', {
   },
   thumbnailUrl: {
     type: DataTypes.STRING
-  },
-  featured: {
-    defaultValue: false,
-    type: DataTypes.BOOLEAN
   },
   categoryId: {
     allowNull: false,
